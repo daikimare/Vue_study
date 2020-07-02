@@ -3,11 +3,46 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>First Vue app</title>
+  <script src="https://unpkg.com/vue"></script>
 </head>
 
 <body>
+  <h1>Vue.js</h1>
+  <div id="app">
+    <!-- <p v-html="messages"></p> -->
+    <p v-bind:style = "style">{{message}}</p>
+  </div>
+  <hr>
+  <!-- <input type="text" onInput = "doInput(event)">
+  <button onClick = "doAction();">
+    Click!
+  </button> -->
+  <input type="number" onchange="doChange(event);" value="20">
+  <script>
+    var data = {
+      // messages: '<h2 style = "color:red;">vue.js sample message.</h2>'
+      message: 'Hello Vue.js!',
+      style: 'font-size:20pt; color:red;'
+    };
 
+    var app = new Vue({
+      el: '#app',
+      data: data
+    });
+
+    function doChange (event) {
+      data.style = 'font-size:' + event.target.value + 'pt; color:red;';
+    }
+
+    function doInput(event) {
+      data.message = event.target.value;
+    }
+
+    function doAction() {
+      data.messages += '<li>' + data.message + '</li>'
+    }
+  </script>
 </body>
 
 </html>

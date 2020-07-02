@@ -3,11 +3,42 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Vue.js,C2S1</title>
+  <script src="https://unpkg.com/vue"></script>
 </head>
 
 <body>
+  <h1>Vue.js</h1>
+  <div id="app">
+    {{message.toUpperCase()  + '!!!'}}
+  </div>
+  <hr>
+  <button onclick="doAction();">　<!-- onClickによってクリックされた時にdoActionメソッドが起動する -->
+  Click
+  </button>
+  <hr>
+  <input type="text" onInput="doWrite(event);">
+  <script>
+    var data ={
+      message:'Hello Vue.js'
+    };
 
+    var app = new Vue({
+      el: '#app',
+      data: data  // data関数の中のdataと指定しているのでdata関数の中身全てを表示する
+    })
+
+    // eventの追加（ボタンに挙動があった場合発火する）
+    function doAction() {
+      data.message = 'You Clicked';  // dataという関数の中にあるmessageの内容を変更する
+    }
+
+    // eventの追加
+    // Inputフィールド内の文字入力をリアルタイムでテキストフィールドへ表示する
+    function doWrite(event) {
+      data.message = event.target.value;
+    }
+  </script>
 </body>
 
 </html>
